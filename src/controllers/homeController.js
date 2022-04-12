@@ -72,7 +72,7 @@ module.exports = {
     getCRUD: getCRUD,
     postCRUD: postCRUD,
     displayUser: displayUser,
-    getEditCRUD: getEditCRUD,
+    getEditCRUD: getEditCRUD, 
     putCRUD: putCRUD,
     deleteCRUD: deleteCRUD,
 } 
