@@ -7,6 +7,8 @@ import './Login.scss';
 
 import { FormattedMessage } from 'react-intl';
 import {handleLoginApi} from '../../services/userService';
+import { userLoginSuccess } from '../../store/actions';
+
 
 class Login extends Component {
     constructor(props) {
@@ -31,18 +33,36 @@ class Login extends Component {
         password: event.target.value,
       })
     }
-  //   handleLogin = async()=>{
-  //     this.setState({
-  //         errMessage:''
-  //     }) 
-  // }
+    handleLogin = async() =>{
+      this.setState({
+        errMessage: ''
+      })
 
-    // handleLogin = () => {
-    //   console.log("test", this.state.password);
-    // }
-    handleLogin=()=>{
-      console.log('username', this.state.username);
-      console.log('pass', this.state.password);
+      try{
+        let data = await handleLoginApi(this.state.username, this.state.password);
+        console.log('sss', data);
+        if(data && data.errCode !== 0){
+          this.setState({
+            errMessage: data.message
+          })
+        }
+
+        if(data && data.errCode === 0){
+          this.props.userLoginSuccess(data.user)
+          //reducer for change status
+          console.log('login success')
+        }
+
+      }catch(err){
+        if(err.response){
+          if(err.response.data){
+            this.setState({
+              errMessage: err.response.data.message
+            })
+          }
+        }
+        console.log(err.response)
+      }
   }
 
     handleShowHidePassword = () => {
@@ -88,8 +108,11 @@ class Login extends Component {
                         </span>
                     </div>
                   </div>
+                  <div className='col-12' style={{ color: 'red'} }>
+                      {this.state.errMessage}
+                  </div>
                   <div className='col-12 '>
-                    <button className='btn-login' onClick={()=> this.handleLogin()}>Login</button>
+                    <button className='btn-login' onClick={()=> {this.handleLogin()}}>Login</button>
                   </div>
                   <div className='col-12'>
                     <span className='forgot-password small'>Forgot your password?</span>
@@ -117,8 +140,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         navigate: (path) => dispatch(push(path)),
-        adminLoginSuccess: (adminInfo) => dispatch(actions.adminLoginSuccess(adminInfo)),
-        adminLoginFail: () => dispatch(actions.adminLoginFail()),
+        //userLoginFail: () => dispatch(actions.userLoginFail()),
+        userLoginSuccess: (userInfor) => dispatch(actions.userLoginSuccess(userInfor))
     };
 };
 
