@@ -46,3 +46,44 @@
     color: orange !important;
   } 
 }
+
+.button-add {
+  background-color: #0071ba;
+}
+
+
+.modal-user-container {
+  .modal-content {
+    .modal-header {
+      button {
+        background: transparent !important;
+        color: white;
+        border: none;
+        font-size: 27px;
+      }
+    }
+  }
+  .modal-user-body {
+    display: flex;
+    gap: 10px; //khoang cach cac component
+    flex-wrap: wrap;
+
+    .input-container {
+      display: flex; //theo row
+      flex-direction: column;
+      width: 49%;
+      
+      &.max-width-input { //css ngang hang vs class trc... Ko co & => class con
+        width: 100%;
+      }
+      
+      input {
+        border-radius: 3px;
+        height: 30px;
+        border: 1px solid grey;
+        outline: none;
+        padding: 0 10px;
+      }
+    }
+  }
+}

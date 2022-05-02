@@ -100,7 +100,7 @@ let createNewUser = async (data) => {
             if(check === true){
                 resolve({
                     errCode: 1,
-                    message: 'Your email is already in used, Plz try another email'
+                    errMessage: 'Your email is already in used, Plz try another email'
                 })
             }else{
                 let hashPasswordFromBcrypt = await hashUserPassword(data.password);
