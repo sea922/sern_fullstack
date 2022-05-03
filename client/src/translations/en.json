@@ -1,4 +1,9 @@
 {
+    "home-header": {
+        "speciality" : "Medical speciality",
+        "search-doctor" : "Find a doctor by speciality"
+    },
+
     "common": {
         "add": "Add",
         "edit": "Edit",
