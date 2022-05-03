@@ -87,7 +87,7 @@ let getAllUsers = (userId) => {
             }
             resolve(users)
         }catch(err){
-            reject(e);
+            reject(err);
         }
     })
 }
