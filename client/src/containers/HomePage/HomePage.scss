@@ -1,0 +1,33 @@
+//reset default
+.slick-prev {
+  //position:relative !important;
+  left      : -10px !important;
+  z-index   : 10 !important;
+  height    : 48px !important;
+  width     : 44px !important;
+  background: #FFF !important;
+  border    : 2px solid #d7d7d7;
+
+  &:hover {
+    background: #d7d7d7 !important;
+  }
+}
+
+.slick-prev:before,
+.slick-next:before {
+  font-family: 'Glyphicons Halflings' !important;
+  color      : red !important;
+}
+
+.slick-next {
+  right     : -10px !important;
+  z-index   : 10 !important;
+  height    : 48px !important;
+  width     : 44px !important;
+  background: #FFF !important;
+  border    : 2px solid #d7d7d7;
+
+  &:hover {
+    background: #d7d7d7 !important;
+  }
+}
