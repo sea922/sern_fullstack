@@ -1,12 +1,12 @@
 //reset default
 .slick-prev {
   //position:relative !important;
-  left      : -10px !important;
-  z-index   : 10 !important;
+  left      : -20px !important;
+  z-index   : 1000 !important;
   height    : 48px !important;
   width     : 44px !important;
   background: #FFF !important;
-  border    : 2px solid #d7d7d7;
+  border    : 2px solid #d7d7d7 !important;
 
   &:hover {
     background: #d7d7d7 !important;
@@ -20,14 +20,117 @@
 }
 
 .slick-next {
-  right     : -10px !important;
+  right     : -15px !important;
   z-index   : 10 !important;
   height    : 48px !important;
   width     : 44px !important;
   background: #FFF !important;
-  border    : 2px solid #d7d7d7;
+  border    : 2px solid #d7d7d7 !important;
 
   &:hover {
     background: #d7d7d7 !important;
+  }
+}
+
+.section-share {
+  &.section-specialty {
+    background: #F5F5F5;
+  }
+
+  &.section-outstanding-doctor {
+    background: #F5F5F5;
+  }
+
+  .section-body {
+    .section-customize {
+      .bg-image {
+        width              : 315px;
+        height             : 180px;
+        background-position: center center;
+        background-size    : cover;
+        background-repeat  : no-repeat;
+        background-color   : #EEEE;
+
+        &.section-specialty {
+          background-image: url(../../assets/specialty/co-xuong-khop.jpg);
+        }
+
+        &.section-medical-facility {
+          background-image: url(../../assets/medical-facility//bv-viet-duc.jpg);
+        }
+
+        &.section-outstanding-doctor {
+          background-image: url(../../assets/out-standing-doctor/anh-dai-dien-bs.jpg);
+          width           : 120px;
+          height          : 120px;
+          border-radius   : 50%;
+        }
+
+        &.section-handbook {
+          background-image: url(../../assets/handbook/benh-vien-nam-hoc-va-hiem-muon-ha-noi.jpg);
+
+        }
+      }
+    }
+
+  }
+}
+
+.section-share {
+  height: 330px;
+
+  //padding: 15px 0;
+  .section-container {
+    margin        : 0 100px;
+    display       : flex;
+    flex-direction: column;
+
+    .section-header {
+      height       : 60px;
+      //border: 1px solid green;
+      padding-top  : 30px;
+      margin-bottom: 30px;
+
+      .title-section {
+        font-size  : 22px;
+        font-weight: 600;
+
+      }
+
+      .btn-section {
+        float         : right;
+        padding       : 5px 10px;
+        border        : none;
+        outline       : none;
+        display       : block;
+        background    : #ebebeb;
+        cursor        : pointer;
+        text-transform: uppercase;
+
+        &:hover {
+          color     : #FFF;
+          background: #F7D800;
+        }
+      }
+    }
+
+  }
+
+}
+
+.section-share {
+  .outer-bg {
+    display        : flex;
+    justify-content: center;
+    margin-bottom  : 10px;
+  }
+
+  .section-customize {
+    padding: 5px;
+
+    .customize-border {
+      border: 1px solid;
+      padding: 20px;
+    }
   }
 }

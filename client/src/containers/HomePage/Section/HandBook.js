@@ -12,25 +12,25 @@ class MedicalFacility extends Component {
       <div className="section-share section-specialty">
         <div className="section-container">
           <div className="section-header">
-            <span className="title-section">Cơ sở y tế nổi bật</span>
-            <button className="btn-section">Tìm kiếm</button>
+            <span className="title-section">Cẩm năng</span>
+            <button className="btn-section">Xem thêm</button>
           </div>
           <div className="section-body">
             <Slider {...settings}>
               <div className="section-customize">
-                <div className="bg-image section-medical-facility" />
+                <div className="bg-image section-handbook" />
                 <div>Bệnh viện Hữu nghị Việt Đức</div>
               </div>
               <div className="section-customize">
-                <div className="bg-image section-medical-facility"></div>
+                <div className="bg-image section-handbook"></div>
                 <div>Bệnh viện Hữu nghị Việt Đức</div>
               </div>
               <div className="section-customize">
-                <div className="bg-image section-medical-facility"></div>
+                <div className="bg-image section-handbook"></div>
                 <div>Bệnh viện Hữu nghị Việt Đức</div>
               </div>
               <div className="section-customize">
-                <div className="bg-image section-medical-facility"></div>
+                <div className="bg-image section-handbook"></div>
                 <div>Bệnh viện Hữu nghị Việt Đức</div>
               </div>
               <div className="section-customize">
