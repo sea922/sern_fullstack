@@ -9,7 +9,8 @@
         "select-doctor" : "Chọn bác sĩ giỏi",
         "fee" : "Gói khám",
         "check-health" : "Khám sức khỏe tổng quát",
-        "support" : "Hỗ trợ"
+        "support" : "Hỗ trợ",
+        "welcome" : "Xin chào"
     },
 
     "banner" : {
@@ -63,6 +64,20 @@
             "system-parameter": {
                 "header": "Tham số hệ thống"
             }
+        },
+        "admin": {
+            "manage-user": "Người dùng",
+            "manage-doctor": "Quản lý bác sĩ",
+            "manage-admin": "Quản lý admin",
+            "crud": "CRUD user",
+            "crud-redux": "CRUD Redux",
+            "clinic": "Phòng khám",
+            "manage-clinic": "Quản lý phòng khám",
+            "specialty": "Chuyên khoa",
+            "manage-specialty": "Quản lý chuyên khoa",
+            "handbook": "Cẩm nang",
+            "manage-handbook": "Quản lý cẩm nang"
+
         }
     },
     "system": {
