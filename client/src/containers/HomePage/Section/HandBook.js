@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import "./MedicalFacility.scss";
 import Slider from "react-slick";
 
 
-class MedicalFacility extends Component {
+class HandBook extends Component {
   render() {
     let settings = this.props.settings;
     console.log("check ", settings);
@@ -58,4 +57,4 @@ const mapDispatchToProps = (dispatch) => {
   return {};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MedicalFacility);
+export default connect(mapStateToProps, mapDispatchToProps)(HandBook);
