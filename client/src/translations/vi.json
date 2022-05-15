@@ -80,6 +80,9 @@
 
         }
     },
+    "manage-user": {
+        "add": "Thêm mới người dùng"
+    },
     "system": {
         "user-manage": {
             "fail-to-load-fouser": "Không thể tải về danh sách người dùng",
