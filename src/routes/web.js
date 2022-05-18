@@ -25,7 +25,7 @@ let initWebRoutes = (app) => {
     router.put('/api/edit-user', userController.handleEditUser)
 
     //
-    router.get('/allcode', userController.getAllCode)
+    router.get('/api/allcode', userController.getAllCode)
 
     return app.use("/", router)
 }
