@@ -11,10 +11,11 @@ export const LANGUAGES = {
     EN: 'en'
 };
  
-export const manageActions = {
+export const CRUD_ACTION = {
     ADD: "ADD",
     EDIT: "EDIT",
-    DELETE: "DELETE"
+    DELETE: "DELETE",
+    CREATE: "CREATE"
 };
 
 export const dateFormat = {
