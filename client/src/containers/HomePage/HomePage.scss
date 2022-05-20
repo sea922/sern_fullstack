@@ -32,6 +32,10 @@
   }
 }
 
+.slick-disabled {
+  display: none !important;
+}
+
 .section-share {
   &.section-specialty {
     background: #F5F5F5;

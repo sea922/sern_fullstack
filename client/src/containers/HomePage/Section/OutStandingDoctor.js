@@ -41,13 +41,14 @@ class OutStandingDoctor extends Component {
               {arrDoctors &&
                 arrDoctors.length > 0 &&
                 arrDoctors.map((item, index) => {
-                  let nameVi= `${item.positionData.valueVi},  ${item.lastName} ${item.firstName}`;
-                  let nameEn= `${item.positionData.valueEn},  ${item.lastName} ${item.firstName}`;
 
                   let imageBase64='';
                     if(item.image){
                       imageBase64=new Buffer(item.image, 'base64').toString('binary')
                     }
+                  
+                  let nameVi= `${item.positionData.valueVi},  ${item.lastName} ${item.firstName}`;
+                  let nameEn= `${item.positionData.valueEn},  ${item.lastName} ${item.firstName}`;
 
                   return (
                     <div className="section-customize" key={index}>
