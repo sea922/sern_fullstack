@@ -54,7 +54,7 @@ class TableManageUser extends Component {
                 arrUsers && arrUsers.length > 0 &&
                 arrUsers.map((item, index) => {
                   return(
-                    <tr>
+                    <tr key={item.id}>
                       <td>{item.email}</td>
                       <td>{item.firstName}</td>
                       <td>{item.lastName}</td>

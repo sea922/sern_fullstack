@@ -291,7 +291,7 @@ class UserRedux extends Component {
                                     { positions && positions.length > 0 &&
                                       positions.map((item, index) => {
                                         return(
-                                            <option key={index} value={item.key}>{language ===  LANGUAGES.VI ? item.valueVi : item.valueEn}</option>
+                                            <option key={index} value={item.keyMap}>{language ===  LANGUAGES.VI ? item.valueVi : item.valueEn}</option>
                                             )
                                         })
                                     
@@ -305,7 +305,7 @@ class UserRedux extends Component {
                                     { roles && roles.length > 0 &&
                                       roles.map((item, index) => {
                                         return(
-                                            <option key={index}>{language === LANGUAGES.VI ? item.valueVi : item.valueEn}</option>
+                                            <option key={index} value={item.keyMap}>{language === LANGUAGES.VI ? item.valueVi : item.valueEn}</option>
                                             )
                                         })
                                     
@@ -316,7 +316,7 @@ class UserRedux extends Component {
                                 <label><FormattedMessage id="manage-user.image"/></label>
                                     <div className='preview-img-container'>
                                         <input id='previewImg' type='file' hidden onChange={(e) => this.handleOnChangeImage(e)}/>
-                                        <label htmlFor="previewImg" className="btn btn-success w-100"><i class="fas fa-upload"></i><FormattedMessage id="manage-user.upload-photo"/></label>
+                                        <label htmlFor="previewImg" className="btn btn-success w-100"><i className="fas fa-upload"></i><FormattedMessage id="manage-user.upload-photo"/></label>
                                         <div className='preview-image'
                                             style={{backgroundImage : `url(${this.state.previewImgURL})`}}
                                             onClick={()=>this.openPreviewImage()}

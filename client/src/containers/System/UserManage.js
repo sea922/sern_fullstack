@@ -172,8 +172,7 @@ class UserManage extends Component {
               {
                 arrUsers && arrUsers.map((item, index) => {
                   return(
-                    <>
-                      <tr>
+                      <tr key={item.id}>
                       <td>{item.email}</td>
                       <td>{item.firstName}</td>
                       <td>{item.lastName}</td>
@@ -183,7 +182,6 @@ class UserManage extends Component {
                         <button className="btn-delete" onClick={()=> this.handleDeleteUser(item)}><i className="fa fa-trash"></i></button>
                       </td>
                       </tr>
-                    </>
                   )
                 })
               }
