@@ -1,6 +1,7 @@
 import actionTypes from './actionTypes';
 import { getAllCodeService, createNewUserService, getAllUsers, 
          deleteUserService, editUserService, getTopDoctorHomeService,
+         getAllDoctors, saveDetailDoctorService
 
 } from '../../services/userService';
 import { toast } from "react-toastify";
@@ -213,6 +214,47 @@ export const fetchTopDoctor = () => {
             console.log('chekc  res 3: ',res);
         }catch(e){
             dispatch({ type: actionTypes.FETCH_TOP_DOCTORS_FAILED})
+        }
+    }
+}
+
+export const fetchAllDoctors = () => {
+    return async (dispatch, getState) => {
+        try{
+            let res = await getAllDoctors();
+            if(res && res.errCode === 0){
+                dispatch({
+                    type: actionTypes.FETCH_ALL_DOCTORS_SUCCESS,
+                    dataDr: res.data
+                })
+            }else dispatch({ type: actionTypes.FETCH_ALL_DOCTORS_FAILED})
+            console.log('chekc  res 3: ',res);
+        }catch(e){
+            dispatch({ type: actionTypes.FETCH_ALL_DOCTORS_FAILED})
+        }
+    }
+}
+
+export const saveDetailDoctor = (data) => {
+    return async (dispatch, getState) => {
+        try{
+            let res = await saveDetailDoctorService(data);
+            console.log(res.errCode)
+            if(res && res.errCode === 0){
+                toast.success('Save infor detail doctor success')
+                dispatch({
+                    type: actionTypes.SAVE_DETAIL_DOCTOR_SUCCESS
+                })
+            }else{
+                toast.error('Save infor detail doctor error')
+                dispatch({
+                    type: actionTypes.SAVE_DETAIL_DOCTOR_FAILED
+                })
+            }
+        }catch(e){
+            dispatch({
+                type: actionTypes.SAVE_DETAIL_DOCTOR_FAILED
+            })
         }
     }
 }
