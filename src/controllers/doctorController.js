@@ -10,7 +10,7 @@ let getTopDoctorHome = async (req, res) => {
     console.log(e);
     return res.status(200).json({
       errCode: -1,
-      messsage: 'Error from server...'
+      errMesssage: 'Error from server...'
     })
   }
 }
@@ -23,7 +23,7 @@ let getAllDoctors = async (req, res) => {
     console.log(e)
     return res.status(200).json({
       errCode: -1,
-      messsage: 'Error from server...'
+      errMesssage: 'Error from server...'
     })
   }
 }
@@ -35,7 +35,19 @@ let postInforDoctor = async (req, res) => {
   }catch(e){
     return res.status(200).json({
       errCode: -1,
-      messsage: 'Error from server ...'
+      errMesssage: 'Error from server ...'
+    })
+  }
+}
+
+let getDetailDoctorById = async (req, res) => {
+  try{
+    let infor = await doctorService.getDetailDoctor(req.query.id);
+    return res.status(200).json(infor)
+  }catch(e){
+    return res.status(200).json({
+      errCode: -1,
+      errMesssage: 'Error from server ...'
     })
   }
 }
@@ -43,5 +55,6 @@ let postInforDoctor = async (req, res) => {
 module.exports = {
   getTopDoctorHome,
   getAllDoctors,
-  postInforDoctor
+  postInforDoctor,
+  getDetailDoctorById
 }
