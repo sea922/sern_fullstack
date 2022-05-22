@@ -50,18 +50,32 @@ let getAllDoctors = () => {
 let saveDetailInforDoctor = (inputData) => {
   return new Promise(async(resolve, reject) => {
     try{
-      if(!inputData.doctorId || !inputData.contentMarkdown || !inputData.contentHTML){
+      if(!inputData.doctorId || !inputData.contentMarkdown || !inputData.contentHTML || !inputData.action){
         resolve({
           errCode: 1,
           errMessage: 'Missing parameter'
         })
       }else{
-        await db.Markdown.create({
-          contentHTML: inputData.contentHTML,
-          contentMarkdown: inputData.contentMarkdown,
-          description: inputData.description,
-          doctorId: inputData.doctorId,
-        })
+        if(inputData.action === "CREATE"){
+          await db.Markdown.create({
+            contentHTML: inputData.contentHTML,
+            contentMarkdown: inputData.contentMarkdown,
+            description: inputData.description,
+            doctorId: inputData.doctorId,
+          })
+        }else if(inputData.action === "EDIT"){
+          let doctorMarkdown =  await db.Markdown.findOne({
+            where: { doctorId: inputData.doctorId },
+            raw: false //sequelize object
+          })
+          if(doctorMarkdown){
+            doctorMarkdown.contentHTML = inputData.contentHTML;
+            doctorMarkdown.contentMarkdown = inputData.contentMarkdown;
+            doctorMarkdown.description = inputData.description;
+            doctorMarkdown.updatedAt = new Date();
+            await doctorMarkdown.save();
+          }
+        }    
       }
       resolve({
         errCode: 0,
