@@ -4,6 +4,7 @@ import HomeHeader from "../../HomePage/HomeHeader";
 import "./DetailDoctor.scss";
 import { getDetailInforDoctor } from "../../../services/userService";
 import { LANGUAGES } from '../../../utils';
+import DoctorSchedule from "./DoctorSchedule";
 
 class DetailDoctor extends Component {
   constructor(props){
@@ -44,6 +45,9 @@ class DetailDoctor extends Component {
           <div className="intro-doctor">
             <div className="content-left" 
             style={{backgroundImage: `url(${detailDoctor && detailDoctor.image ? detailDoctor.image : ''})` }}>
+              <DoctorSchedule 
+                doctorIdFromParent = {detailDoctor && detailDoctor.id ? detailDoctor.id : -1}
+              />
             </div>
             <div className="content-right">
               <div className="up">{language===LANGUAGES.VI ? nameVi : nameEn}</div>

@@ -16,5 +16,11 @@
         padding: 5px 15px;
         border: 1px solid gray;
       }
+      .btn-schedule {
+        &.active {
+            background-color: orange !important;
+        }
+    }
+    .btn-save-schedule {}
   }
 } 
