@@ -202,11 +202,48 @@ let bulkCreateSchedule = (data) => {
   })
 }
 
+//select Schedule Time
+let getScheduleByDate = (doctorId, date) => {
+  return new Promise(async(resolve, reject) => {
+      try {
+          if (!doctorId || !date) {
+              resolve({
+                  errCode: 1,
+                  errMessage: 'Missing required param'
+              })
+          } else {
+              let dataSchedule = await db.Schedule.findAll({
+                  where: {
+                      doctorId: doctorId,
+                      date: date,
+                  },
+                  include: [
+                    { model: db.Allcode, as: 'timeTypeData', attributes: ['valueEn', 'valueVi']},
+                  ],
+                  raw: true,
+                  nest: true
+              })
+
+              if (!dataSchedule) dataSchedule = [];
+
+              resolve({
+                  errCode: 0,
+                  data: dataSchedule
+              })
+          }
+
+      } catch (e) {
+          reject(e);
+      }
+  })
+}
+
 
 module.exports = {
   getTopDoctorHome: getTopDoctorHome,
   getAllDoctors: getAllDoctors,
   saveDetailInforDoctor: saveDetailInforDoctor,
   getDetailDoctor: getDetailDoctor,
-  bulkCreateSchedule: bulkCreateSchedule
+  bulkCreateSchedule: bulkCreateSchedule,
+  getScheduleByDate
 }

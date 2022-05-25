@@ -161,6 +161,7 @@ buildDataInputSelect =(inputData)=>{
         let {rangeTime}=this.state;
         let {language}=this.props;
 
+        let yesterday =new Date(new Date().setDate(new Date().getDate()-1))
         return (
                 <div className="manage-schedule-container">
                     <div className="m-s-title">
@@ -184,7 +185,7 @@ buildDataInputSelect =(inputData)=>{
                                 onChange={this.handleOnchangeDatePicker}
                                 className="form-control"
                                 value={this.state.currentDate}
-                                minDate={new Date()}
+                                minDate={yesterday}
                             />
                         </div>
                     </div>
