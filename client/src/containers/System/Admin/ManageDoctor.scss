@@ -8,7 +8,11 @@
     font-weight: 600;
   }
   .more-infor-extra {
-    margin-bottom: 20px;
+    margin-bottom: 20px !important;
+    label {
+      padding-top: 10px;
+      padding-bottom: 5px;
+    }
   }
   .save-content-doctor {
     margin-top: 20px;

@@ -79,7 +79,32 @@ let saveDetailInforDoctor = (inputData) => {
             doctorMarkdown.updatedAt = new Date();
             await doctorMarkdown.save();
           }
-        }    
+        }  
+        //upsert doctor infor
+        let doctorInfor = await db.Doctor_Infor.findOne({
+          where : { doctorId: inputData.doctorId},
+          raw: false
+        })
+        if(doctorInfor){
+          doctorInfor.doctorId = inputData.doctorId;
+          doctorInfor.priceId = inputData.selectedPrice;
+          doctorInfor.provinceId = inputData.selectedProvince;
+          doctorInfor.paymentId = inputData.selectedPayment;
+          doctorInfor.nameClinic = inputData.nameClinic;
+          doctorInfor.addressClinic = inputData.addressClinic;
+          doctorInfor.notes = inputData.note;
+          await doctorInfor.save()
+        }else {
+          await db.Doctor_Infor.create({
+            doctorId: inputData.doctorId,
+            priceId: inputData.selectedPrice,
+            provinceId: inputData.selectedProvince,
+            paymentId: inputData.selectedPayment,
+            nameClinic: inputData.nameClinic,
+            addressClinic: inputData.addressClinic,
+            notes: inputData.note,
+        })
+        }  
       }
       resolve({
         errCode: 0,
