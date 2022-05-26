@@ -138,7 +138,13 @@ let getDetailDoctor = (inputId) => {
             model: db.Allcode,
             as: 'positionData',
             attributes: ['valueVi', 'valueEn']
-          },
+          }, 
+          {
+            model: db.Doctor_Infor,
+            attributes: {
+              exclude: ['doctorId', 'id']
+            }
+          } 
         ],
         raw: false, //squelize object not js object 
         nest: true //explore infor not ". dot"
