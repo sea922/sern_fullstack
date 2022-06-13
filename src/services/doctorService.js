@@ -270,7 +270,7 @@ let getScheduleByDate = (doctorId, date) => {
 }
 
 //extra infor doctor
-let getExtraInfoDoctorById = (idInput) => {
+let getExtraInforDoctorById = (idInput) => {
   return new Promise(async(resolve, reject) => {
       try {
           if (!idInput) {
@@ -320,6 +320,63 @@ let getExtraInfoDoctorById = (idInput) => {
   })
 }
 
+let getProfileDoctorById = (idInput) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      if (!idInput) {
+        resolve({
+          errCode: 1,
+          errMessage: "Missing required paramecter",
+        });
+      } else {
+        let data = await db.User.findOne({
+          where: { id: idInput },
+          attributes: {
+            exclude: ["password"],
+          },
+          include: [
+            {
+              model: db.Allcode,
+              as: "positionData",
+              attributes: ["valueEn", "valueVi"],
+            },
+            {
+              model: db.Doctor_Infor,
+              attributes: {
+                exclude: ["id", "doctorId"],
+              },
+              include: [
+                {
+                  model: db.Allcode,
+                  as: "priceTypeData",
+                  attributes: ["valueEn", "valueVi"],
+                },
+                {
+                  model: db.Allcode,
+                  as: "priceTypeData",
+                  attributes: ["valueEn", "valueVi"],
+                },
+                {
+                  model: db.Allcode,
+                  as: "provinceTypeData",
+                  attributes: ["valueEn", "valueVi"],
+                },
+                {
+                  model: db.Allcode,
+                  as: "paymentTypeData",
+                  attributes: ["valueEn", "valueVi"],
+                },
+              ],
+            },
+          ],
+        });
+      }
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
 
 module.exports = {
   getTopDoctorHome: getTopDoctorHome,
@@ -328,5 +385,6 @@ module.exports = {
   getDetailDoctor: getDetailDoctor,
   bulkCreateSchedule: bulkCreateSchedule,
   getScheduleByDate: getScheduleByDate,
-  getExtraInfoDoctorById: getExtraInfoDoctorById,
+  getExtraInforDoctorById: getExtraInforDoctorById,
+  getProfileDoctorById: getProfileDoctorById
 }
