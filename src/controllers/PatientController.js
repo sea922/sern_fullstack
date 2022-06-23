@@ -1,6 +1,6 @@
 import patientService from '../services/patientService';
 
-// order schedule clinic
+// order schedule clinic // 
 let postBookAppointment = async(req, res) => {
     try {
         let infor = await patientService.postBookAppointment(req.body);
