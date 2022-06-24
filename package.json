@@ -22,7 +22,8 @@
     "lodash": "^4.17.21",
     "mysql2": "^2.3.3",
     "nodemailer": "^6.7.5",
-    "sequelize": "^6.18.0"
+    "sequelize": "^6.18.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
