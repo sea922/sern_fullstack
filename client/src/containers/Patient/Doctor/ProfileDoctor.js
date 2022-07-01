@@ -83,12 +83,12 @@ class ProfileDoctor extends Component {
               <div className="down">
                 {isShowDescription === true ?
                 <>
-                {dataProfile && dataProfile.Markdown && dataProfile.Markdown.description
-                && <span>
+                  {dataProfile && dataProfile.Markdown && dataProfile.Markdown.description
+                  && <span>
                     {dataProfile.Markdown.description}
                   </span>
-                    }
-                    </>
+                }
+                </>
                     :
                     <>
                     {this.renderTimeBooking(dataTime)}

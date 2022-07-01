@@ -178,14 +178,14 @@ class DoctorSchedule extends Component {
                                     )
                                 })}
 
-                                <div className="book-free">
-                                    <span>Chọn <i className="far fa-hand-point-up"></i>  và đặt (miễn phí)</span>
-                                </div>
                             </>
 
                             : <div className="text-warning font-italic"><FormattedMessage id="patient.detail-doctor.no-schedule" /></div>
                         } 
                         {/* Không có lịch hẹn trong thời gian này, vui lòng chọn thời gian khác ! */}
+                    </div>
+                    <div className="book-free pt-3">
+                        <span>Chọn <i className="far fa-hand-point-up"></i>  và đặt (miễn phí)</span>
                     </div>
                 </div>
             </div>
