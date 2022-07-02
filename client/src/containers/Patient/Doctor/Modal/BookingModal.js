@@ -176,6 +176,7 @@ class BookingModal extends Component {
             <Modal isOpen={isOpenModal} className={'booking-modal-container'}
             size="lg"
             centered
+            toggle={isCloseModal}
             >
               <div className='booking-modal-content'>
                 <div className='booking-modal-header'>
@@ -190,6 +191,8 @@ class BookingModal extends Component {
                       doctorId = {doctorId}
                       isShowDescription = {false}
                       dataTime = {dataTime}
+                      isShowLinkDetail={false}
+                      isShowPrice={true}
                     />
                   </div>
                   <form className='row'>

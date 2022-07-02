@@ -26,16 +26,16 @@ class DoctorSchedule extends Component {
         console.log('moment en: ', moment(new Date()).locale('en').format('ddd - DD/MM'));
 
         let allDays = this.getArrDays(language);
-        // if(allDays && allDays.length > 0){
-        //     let res = await getScheduleDoctorByDate(this.props.doctorIdFromParent, allDays[0].value);
-        //     this.setState({
-        //         allDays: allDays,
-        //         allAvailableTime: res.data ? res.data : []
-        //     })
-        // }
-        this.setState({
-            allDays:allDays,
-        })
+        if(this.props.doctorIdFromParent){
+            let res = await getScheduleDoctorByDate(this.props.doctorIdFromParent, allDays[0].value);
+            this.setState({
+                allDays: allDays,
+                allAvailableTime: res.data ? res.data : []
+            })
+        }
+        // this.setState({
+        //     allDays:allDays,
+        // })
         
     }
     capitalizeFirstLetter(string){

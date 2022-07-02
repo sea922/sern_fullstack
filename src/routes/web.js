@@ -4,6 +4,7 @@ import userController from "../controllers/userController";
 import doctorController from "../controllers/doctorController";
 import patientController from "../controllers/patientController";
 import specialtyController from "../controllers/specialtyController";
+import clinicController from "../controllers/clinicController";
 
 let router = express.Router();
 
@@ -16,21 +17,16 @@ let initWebRoutes = (app) => {
     router.post('/put-crud',homeController.putCRUD)
     router.get('/delete-crud', homeController.deleteCRUD)
 
+    //API Login & CRUD With Redux
     router.post('/api/login', userController.handleLogin)
     router.get('/api/get-all-users', userController.handleGetAllUsers)
-
-    /**
-     * 
-     */
-
     router.post('/api/create-new-user', userController.handleCreateNewUser)
     router.delete('/api/delete-user', userController.handleDeleteUser)
     router.put('/api/edit-user', userController.handleEditUser)
 
-    //
+
+     //API Top Doctor
     router.get('/api/allcode', userController.getAllCode)
-
-
     //doctor
     router.get('/api/top-doctor-home', doctorController.getTopDoctorHome);
     router.get('/api/get-all-doctors', doctorController.getAllDoctors);
@@ -48,6 +44,9 @@ let initWebRoutes = (app) => {
     router.post('/api/create-new-specialty', specialtyController.createSpecialty);
     router.get('/api/get-specialty', specialtyController.getAllSpecialty);
     router.get('/api/get-detail-specialty-by-id', specialtyController.getDetailSpecialtyById);
+
+    //Clinic
+    router.post('/api/create-new-clinic', clinicController.createClinic);
 
 
     return app.use("/", router)

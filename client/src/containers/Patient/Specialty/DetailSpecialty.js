@@ -40,10 +40,20 @@ class DetailSpecialty extends Component {
             })
           }
         }
+        let dataProvince = resProvince.data;
+        if(dataProvince && dataProvince.length > 0){
+          dataProvince.unshift({
+            createdAt: null,
+            keyMap: "ALL",
+            type: "PROVINCE",
+            valueEm: "ALL",
+            valueVi: "Toàn quốc"
+          })
+        }
         this.setState({
           dataDetailSpecialty:  res.data,
           arrDoctorId: arrDoctorId,
-          listProvince: resProvince.data,
+          listProvince: dataProvince ? dataProvince : [],
         })
       }
     }
@@ -54,8 +64,31 @@ class DetailSpecialty extends Component {
     }
   }
 
-  handleOnchangeSelect = (e) => {
-    console.log('check onchange: ', e.target.value);
+  handleOnchangeSelect = async(e) => {
+    if(this.props.match && this.props.match.params && this.props.match.params.id){
+      let id = this.props.match.params.id;
+      let location = e.target.value;
+      let res = await getAllDetailSpecialtyById({
+        id: id,
+        location: location
+      })
+      if(res && res.errCode === 0 ){
+        let data = res.data;
+        let arrDoctorId = [];
+        if(data && !_.isEmpty(res.data)){
+          let arr = data.doctorSpecialty;
+          if(arr && arr.length > 0){
+            arr.map(item =>{
+              arrDoctorId.push(item.doctorId)
+            })
+          }
+        }
+        this.setState({
+          dataDetailSpecialty:  res.data,
+          arrDoctorId: arrDoctorId 
+        })
+      }
+    }
 }
 
   render() {
@@ -93,7 +126,8 @@ class DetailSpecialty extends Component {
                       <ProfileDoctor
                         doctorId={item}
                         isShowDescription={true}
-                        // dataTime = {dataTime}
+                        isShowLinkDetail={true}
+                        isShowPrice={false}
                       />
                     </div>
                   </div>

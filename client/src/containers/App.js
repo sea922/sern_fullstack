@@ -15,6 +15,8 @@ import Login from '../containers/Auth/Login';
 import Header from './Header/Header';
 import System from '../routes/System';
 
+import "./App.scss"
+
 import { CustomToastCloseButton } from '../components/CustomToast';
 import ConfirmModal from '../components/ConfirmModal';
 import HomePage from './HomePage/HomePage';
