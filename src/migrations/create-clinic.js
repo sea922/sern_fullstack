@@ -12,7 +12,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       address: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       descriptionHTML: {
         type: Sequelize.TEXT

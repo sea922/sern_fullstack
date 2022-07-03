@@ -6,7 +6,7 @@ import { LANGUAGES, CRUD_ACTIONS, CommonUtils } from '../../../utils';
 import './ManageClinic.scss';
 import MarkdownIt from "markdown-it";
 import MdEditor from "react-markdown-editor-lite";
-import {createNewSpecialty} from '../../../services/userService';
+import {createNewClinic} from '../../../services/userService';
 
 
 const mdParser = new MarkdownIt();
@@ -16,6 +16,7 @@ class ManageClinic extends Component {
         super(props);
         this.state = {
           name: '',
+          address: '',
           imageBase64: '',
           descriptionHTML: '',
           descriptionMarkdown: ''
@@ -63,11 +64,13 @@ class ManageClinic extends Component {
     }
 
     handleSaveNewClinic = async() => {
-      let res = await createNewSpecialty(this.state);
+      let res = await createNewClinic(this.state);
+      console.log('dadada address: ', this.state);
       if(res && res.errCode === 0){
         toast.success('Succeed !')
         this.setState({
           name: '',
+          address: '',
           imageBase64: '',
           descriptionHTML: '',
           descriptionMarkdown: ''
@@ -99,7 +102,7 @@ class ManageClinic extends Component {
                 <div className='col-6 form-group'>
                   <label>Địa chỉ phòng khám</label>
                   <input type='text' className='form-control'
-                    key={this.state.address}
+                    value={this.state.address}
                     onChange ={(e) => {this.handleOnChangeInput(e, 'address')}}
                   />
                 </div>
