@@ -2,6 +2,7 @@ import { reject } from "bcrypt/promises";
 import db from "../models/index";
 require('dotenv').config();
 import _ from 'lodash';
+import emailService from '../services/emailService';
 
 const MAX_NUMBER_SCHEDULE = process.env.MAX_NUMBER_SCHEDULE;
 
@@ -392,6 +393,90 @@ let getProfileDoctorById = (idInput) => {
   });
 };
 
+let getListPatientForDoctor = (doctorId, date) => {
+  return new Promise(async(resolve, reject) => {
+    try{
+      if(!doctorId || !date){
+        resolve({
+          errCode:1,
+          errMessage: 'Missing parameter'
+        })
+      }else {
+        let data = await db.Booking.findAll({
+          where: {
+            statusId: 'S2',
+            doctorId: doctorId,
+            date: date
+          },
+          include: [{
+            model: db.User,
+            as: 'patientData',
+            attributes: ['email', 'firstName', 'address', 'gender'],
+            include: [{
+              model: db.Allcode,
+              as: 'genderData',
+              attributes: ['valueVi', 'valueEn']
+            }]
+          },{
+            model: db.Allcode,
+            as: 'timeTypeDataPatient',
+            attributes: ['valueVi', 'valueEn']
+          }],
+          raw: false,
+          nest: true
+        })
+        resolve({
+          errCode: 0,
+          errMessage: 'OK',
+          data
+        })
+      }
+    }catch(e){
+      reject(e);
+    }
+  })
+}
+
+const sendRemedy = (data) =>{
+  return new Promise(async(resolve, reject) => {
+    try{
+      if(!data.email || !data.doctorId || !data.patientId || !data.timeType){
+        resolve({
+          errCode: 1,
+          errMessage: 'Missing parameter'
+        })
+      }else {
+        let appointment =  await db.Booking.findOne({
+          where: {
+            doctorId: data.doctorId,
+            patientId: data.patientId,
+            timeType: data.timeType,
+            statusId: 'S2'
+          },
+          raw: false
+        })
+        if(appointment){
+          appointment.statusId ='S3';
+          await appointment.save();
+        }
+        await emailService.sendAttachment({
+          email: data.email,
+          patientId: data.patientId,
+          imgBase64: data.imgBase64,
+          patientName: data.patientName,
+          language: data.language,
+        });
+        resolve({
+          errCode: 0,
+          errMessage: 'OK'
+        })
+      }
+    }catch(e){
+      reject(e);
+    }
+  })
+}
+
 
 module.exports = {
   getTopDoctorHome: getTopDoctorHome,
@@ -401,5 +486,7 @@ module.exports = {
   bulkCreateSchedule: bulkCreateSchedule,
   getScheduleByDate: getScheduleByDate,
   getExtraInforDoctorById: getExtraInforDoctorById,
-  getProfileDoctorById: getProfileDoctorById
+  getProfileDoctorById: getProfileDoctorById,
+  getListPatientForDoctor : getListPatientForDoctor,
+  sendRemedy : sendRemedy ,
 }

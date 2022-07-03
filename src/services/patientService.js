@@ -14,7 +14,8 @@ let buildUrlEmail = (doctorId, token) => {
 let postBookAppointment = (data) => {
   return new Promise(async(resolve, reject) => {
     try {
-      if(!data.email || !data.doctorId || !data.timeType || !data.date || !data.fullName) {
+      if(!data.email || !data.doctorId || !data.timeType || 
+        !data.date || !data.fullName || !data.selectGender || !data.address) {
         resolve({
           errCode: 1,
           errMessage: 'Missing parameter'
@@ -35,7 +36,10 @@ let postBookAppointment = (data) => {
           where: { email : data.email },
           defaults: {
             email: data.email,
-            roleId: 'R3'
+            roleId: 'R3',
+            gender: data.selectGender,
+            address: data.address,
+            firstName: data.fullName
           }
         })
         console.log('check user: ', user[0]);
@@ -107,5 +111,6 @@ let postVerifyBookAppointment = (data) => {
 
 module.exports = {
   postBookAppointment: postBookAppointment,
-  postVerifyBookAppointment: postVerifyBookAppointment
+  postVerifyBookAppointment: postVerifyBookAppointment,
+  
 }
