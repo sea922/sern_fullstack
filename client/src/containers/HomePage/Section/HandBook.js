@@ -18,27 +18,27 @@ class HandBook extends Component {
             <Slider {...settings}>
               <div className="section-customize">
                 <div className="bg-image section-handbook" />
-                <div>Bệnh viện Hữu nghị Việt Đức</div>
+                <div>Cẩm năng 1</div>
               </div>
               <div className="section-customize">
                 <div className="bg-image section-handbook"></div>
-                <div>Bệnh viện Hữu nghị Việt Đức</div>
+                <div>Cẩm năng 2</div>
               </div>
               <div className="section-customize">
                 <div className="bg-image section-handbook"></div>
-                <div>Bệnh viện Hữu nghị Việt Đức</div>
+                <div>Cẩm năng 3</div>
               </div>
               <div className="section-customize">
                 <div className="bg-image section-handbook"></div>
-                <div>Bệnh viện Hữu nghị Việt Đức</div>
+                <div>Cẩm năng 4</div>
               </div>
               <div className="section-customize">
-                <div className="bg-image section-medical-facility"></div>
-                <div>Bệnh viện Hữu nghị Việt Đức</div>
+                <div className="bg-image section-handbook"></div>
+                <div>Cẩm năng 5</div>
               </div>
               <div className="section-customize">
-                <div className="bg-image section-medical-facility"></div>
-                <div>Bệnh viện Hữu nghị Việt Đức</div>
+                <div className="bg-image section-handbook"></div>
+                <div>Cẩm năng 6</div>
               </div>
             </Slider>
           </div>

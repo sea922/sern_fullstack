@@ -107,6 +107,9 @@ class ManagePatient extends Component {
         console.log(dataChild.email)
       }
     }
+    handleBtnRemedy = () => {
+      alert('Updating');
+    }
 
     render() {
       let { dataPatient, isOpenRemedyModal, dataModal, isShowLoading } = this.state;
